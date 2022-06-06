@@ -3,72 +3,38 @@ local X = 8
 local Y = 8
 local Z = 8
 
--- Current location, +z is down
+-- Current location, +z is up
 local x = 0
 local y = 0
 local z = 0
 
-function movex(N)
+-- Current orientation
+--        +x
+--        00
+--  -y 03 TR 01 +y
+--        02
+--        -x
+local O = 0
+
+function count(func, N)
   local n = 0
-  
-  if 0 < N then
-    while n < N do
-      turtle.forward()
-      n = n + 1
-    end
-  end
-  if N < 0 then
-    while n < -N do
-      turtle.back()
-      n = n + 1
-    end
+  while n < N do
+    func()
+    n = n + 1
   end
 end
-  
-function movey(N)
-  local n = 0
-  
-  turtle.turnLeft()
-  
-  if 0 < N then
-    while n < N do
-      turtle.forward()
-      n = n + 1
-    end
-  end
-  if N < 0 then
-    while n < -N do
-      turtle.back()
-      n = n + 1
-    end
-  end
-  
-  turtle.turnRight()
-end
 
-function movez(N)
-  local n = 0
-  
-  if 0 < N then
-    while n < N do
-      turtle.up()
-      n = n + 1
+function set_orientation(P)
+  local k = (P - O) % 3
+  while k != 0 do
+    if k < 0 then
+      turtle.turnRight()
+    else
+      turtle.turnLeft()
     end
-  end
-  if N < 0 then
-    while n < -N do
-      turtle.down()
-      n = n + 1
-    end
-  end
+    k = (P - O) % 3
 end
   
+    
 
-movex(5)
-movez(5)
-movey(5)
-movex(-5)
-movez(-5)
-movey(-5)
-
-  
+local function movex()
