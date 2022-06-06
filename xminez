@@ -13,8 +13,7 @@ function go_retire()
   x, y, z = get_location()
   movex(x_work - x)
   movey(y_work - y)
-  movez(z_work - z)
-  minez(1)
+  minez(1-z)
 end
 
 function go_work()
