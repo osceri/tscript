@@ -89,9 +89,13 @@ end
 good_next = level_check("inventory", inventory_count_func, inventory_action_func, 13, 15) and level_check("coal", coal_count_func, coal_action_func, 8, 16) and level_check("fuel", repl_count_func, repl_action_func, 1000, 2000)
 
 while true do
+  x, y, z = get_location()
+  print("pos:", x, y, z)
+  print("Levels:")
   inv_good = level_check("inventory", inventory_count_func, inventory_action_func, 13, 15)
   coal_good = level_check("coal", coal_count_func, coal_action_func, 8, 16)
   fuel_good = level_check("fuel", repl_count_func, repl_action_func, 1000, 2000)
+  print("")
   
   good_prev = good_next
   good_next = inv_good and coal_good and fuel_good 
@@ -106,8 +110,10 @@ while true do
   if good_next then
     work()
   else
-    level_fix("inventory", inventory_count_func, inventory_action_func, 13, 15)
-    level_fix("coal", coal_count_func, coal_action_func, 8, 16)
-    level_fix("fuel", repl_count_func, repl_action_func, 1000, 2000)
+    print("Attempting fix(es):")
+    level_fix(" - inventory", inventory_count_func, inventory_action_func, 13, 15)
+    level_fix(" - coal", coal_count_func, coal_action_func, 8, 16)
+    level_fix(" - fuel", repl_count_func, repl_action_func, 1000, 2000)
+    print("")
   end
 end
