@@ -68,7 +68,7 @@ function inventory_action_func()
   return true
 end
 
-good_next = level_check(inventory_count_func, inventory_action_func, 13, 15) and level_check(coal_count_func, coal_action_func, 8, 16) andlevel_check(repl_count_func, repl_action_func, 1000, 2000)
+good_next = level_check(inventory_count_func, inventory_action_func, 13, 15) and level_check(coal_count_func, coal_action_func, 8, 16) and level_check(repl_count_func, repl_action_func, 1000, 2000)
 
 while true do
   inv_good = level_check(inventory_count_func, inventory_action_func, 13, 15)
