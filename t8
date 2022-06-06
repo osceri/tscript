@@ -1,10 +1,18 @@
-
 function repl_count_func()
   return turtle.getFuelLevel()
 end
 
 function repl_action_func()
-  return turtle.refuel(4)
+  return turtle.refuel(1)
+end
+
+function coal_count_func()
+  turtle.select(1)
+  return turtle.getItemCount()
+end
+
+function coal_action_func()
+  return turtle.suck(4)
 end
 
 function vibe_check(count_func, action_func, lower, upper)
