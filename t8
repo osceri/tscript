@@ -1,0 +1,35 @@
+function print_level(count_func)
+  print("Level: ", count_func())
+end
+
+function repl_count_func()
+  return turtle.getFuelLevel()
+end
+
+function repl_action_func()
+  return turtle.refuel(4)
+end
+
+function vibe_check(count_func, action_func, lower, upper)
+  level = count_func()
+  
+  print_level(action_func)
+  
+  if level < lower then
+    print("Level below threshold (", lower, ")!")
+    write("Refueling ..")
+    while level < upper do
+      if not(action_func()) then
+        print(" failed.")
+        print_level(count_func)
+        return false
+      end
+      write(".")
+      level = count_func()
+    end
+    print(" succeeded.")
+    print_level()
+  end
+  
+  return true
+end
