@@ -9,23 +9,21 @@ local z_work = 0
 
 function go_work()
   x, y, z = get_location()
-  movex(x - x_work)
-  movey(y - y_work)
-  movez(z - z_work)
+  movex(x_work - x)
+  movey(y_work - y)
+  movez(z_work - z)
 end
 
 function go_home()
   x, y, z = get_location()
-  movez(z_work - z)
-  movey(y_work - y)
-  movex(x_work - x)
+  movez(-z)
+  movey(-y)
+  movex(-x)
 end
 
 function work()
   turtle.digDown()
-  if movez(-1) then
-    z_work = z_work - 1
-  end
+  z_work = z_work - 1
 end
 
 
@@ -34,6 +32,7 @@ function repl_count_func()
 end
 
 function repl_action_func()
+  go_home()
   return turtle.refuel(1)
 end
 
@@ -43,6 +42,7 @@ function coal_count_func()
 end
 
 function coal_action_func()
+  go_home()
   set_orientation(1)
   return turtle.suck(4)
 end
@@ -59,6 +59,7 @@ function inventory_count_func()
 end
 
 function inventory_action_func()
+  go_home()
   set_orientation(2)
   return turtle.drop(4)
 end
@@ -75,16 +76,12 @@ while true do
   if inv_good and coal_good and fuel_good then
     go_work()
     work()
-  else
-    go_home()
-    print("Checking inventory;")
-    inv_good = vibe_check(inventory_count_func, inventory_action_func, 13, 15)
-    print("")
-    print("Checking coal;")
-    coal_good = vibe_check(coal_count_func, coal_action_func, 8, 16)
-    print("")
-    print("Checking fuel;")
-    fuel_good = vibe_check(repl_count_func, repl_action_func, 1000, 2000)
-    print("")
   end
+    
+  print("Checking inventory;")
+  inv_good = vibe_check(inventory_count_func, inventory_action_func, 13, 15)
+  print("Checking coal;")
+  coal_good = vibe_check(coal_count_func, coal_action_func, 8, 16)
+  print("Checking fuel;")
+  fuel_good = vibe_check(repl_count_func, repl_action_func, 1000, 2000)
 end
