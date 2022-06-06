@@ -25,16 +25,24 @@ function count(func, N)
 end
 
 function set_orientation(P)
-  local k = (P - O) % 3
-  while k != 0 do
+  local k = (O - P) % 4
+  while k ~= 0 do
     if k < 0 then
       turtle.turnRight()
+      O = (O + 1) % 4
     else
       turtle.turnLeft()
+      O = (O - 1) % 4
     end
-    k = (P - O) % 3
+    k = (O - P) % 4
+  end
 end
-  
-    
 
-local function movex()
+set_orientation(0)
+set_orientation(1)
+set_orientation(0)
+set_orientation(2)
+set_orientation(0)
+set_orientation(3)
+set_orientation(0)
+set_orientation(4)
