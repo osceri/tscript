@@ -105,17 +105,20 @@ function inventory_action_func()
   return true
 end
 
-good_next = false
-
-while true do
+function get_good()
   print("Levels:")
   inv_good = level_check("inventory", inventory_count_func, inventory_action_func, 2, 15)
   coal_good = level_check("coal", coal_count_func, coal_action_func, 8, 16)
   fuel_good = level_check("fuel", repl_count_func, repl_action_func, 1000, 2000)
   print("")
-  
+  return inv_good and coal_good and fuel_good 
+end
+
+good_next = get_good()
+
+while true do
   good_prev = good_next
-  good_next = inv_good and coal_good and fuel_good 
+  good_next = get_good()
   
   if not(good_next) and good_prev then
     go_home()
