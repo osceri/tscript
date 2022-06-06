@@ -41,7 +41,8 @@ end
 
 function coal_action_func()
   go_home()
-  return turtle.suckUp(4)
+  set_orientation(1)
+  return turtle.suck(4)
 end
 
 function inventory_count_func()
@@ -57,6 +58,7 @@ end
 
 function inventory_action_func()
   go_home()
+  set_orientation(2)
   return turtle.drop(4)
 end
 
