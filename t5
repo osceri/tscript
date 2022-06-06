@@ -61,27 +61,58 @@ function go_forward()
   return F
 end
 
+function go_up()
+  local F = turtle.up()
+  if F then
+    z = z + 1
+  end
+  return F
+end
+
+function go_down()
+  local F = turtle.up()
+  if F then
+    z = z - 1
+  end
+  return F
+end
+
 function movex(dx)
   if 0 < dx then 
     set_orientation(0)
-    count(go_forward, dx)
+    return count(go_forward, dx)
   end
   if 0 > dx then 
     set_orientation(2)
-    count(go_forward, -dx)
+    return count(go_forward, -dx)
   end
 end
     
 function movey(dy)
   if 0 < dy then 
     set_orientation(1)
-    count(go_forward, dy)
+    return count(go_forward, dy)
   end
   if 0 > dy then 
     set_orientation(3)
-    count(go_forward, -dy)
+    return count(go_forward, -dy)
   end
 end
-   
 
-set_orientation(1)
+function movez(dz)
+  if 0 < dz then 
+    return count(go_up, dz)
+  end
+  if 0 > dz then 
+    return count(go_down, -dz)
+  end
+end
+
+function go_home()
+  movez(-z)
+  movey(-y)
+  movex(-x)
+  set_orientation(0)
+end
+
+if ~movex(10) then go_home() end
