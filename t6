@@ -1,0 +1,13 @@
+function vibe_check(lower, upper)
+  level = turtle.getFuelLevel()
+  if level < lower then
+    while upper < level do
+      if not(turtle.refuel()) then
+        write("bro im straight up not having a good time")
+        return false
+      end
+      level = turtle.getFuelLevel()
+  end
+  write("im cool bro !")
+  return true
+end
