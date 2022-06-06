@@ -9,16 +9,16 @@ local z_work = 0
 
 function go_work()
   x, y, z = get_location()
-  movex(x_work - x)
-  movey(y_work - y)
-  movez(z_work - z)
+  movex(x - x_work)
+  movey(y - y_work)
+  movez(z - z_work)
 end
 
 function go_home()
   x, y, z = get_location()
-  movez(z - z_work)
-  movey(y - y_work)
-  movex(x - x_work)
+  movez(z_work - z)
+  movey(y_work - y)
+  movex(x_work - x)
 end
 
 function work()
