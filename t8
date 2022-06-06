@@ -24,8 +24,6 @@ function vibe_check(count_func, action_func, lower, upper)
   return true
 end
 
-
-
 function level_fix(count_func, action_func, lower, upper)
   level = count_func()
   
