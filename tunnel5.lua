@@ -1,0 +1,5 @@
+dig()
+up()
+dig()
+down()
+forward()
