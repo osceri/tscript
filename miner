@@ -8,6 +8,7 @@ local y_work = 3
 local z_work = 0
 
 function go_work()
+  x, y, z = get_location()
   movex(x_work - x)
   movex(y_work - y)
   movex(z_work - z)
@@ -49,7 +50,7 @@ function inventory_count_func()
   local slot = 0
   for i = 2,16 do
     turtle.select(i)
-    if turtle.getItemCount() < 1
+    if turtle.getItemCount() < 1 then
       slot = slot + 1
     end
   end
