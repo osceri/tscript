@@ -3,11 +3,11 @@ shell.run("wget https://github.com/osceri/tscript/raw/main/t8")
 require("t5")
 require("t8")
 
-local x_work = 3
-local y_work = 3
+local x_work = 5
+local y_work = 0
 local z_work = 0
 
-local shaft_size = 2
+local shaft_size = 4
 
 function go_retire()
   x, y, z = get_location()
@@ -57,7 +57,7 @@ function work()
   shaft(shaft_size)
   z_work = z_work - 1
   
-  if z_work < -10 then
+  if z_work < -120 then
     return true
   else
     return false
@@ -109,7 +109,7 @@ good_next = false
 
 while true do
   print("Levels:")
-  inv_good = level_check("inventory", inventory_count_func, inventory_action_func, 13, 15)
+  inv_good = level_check("inventory", inventory_count_func, inventory_action_func, 2, 15)
   coal_good = level_check("coal", coal_count_func, coal_action_func, 8, 16)
   fuel_good = level_check("fuel", repl_count_func, repl_action_func, 1000, 2000)
   print("")
@@ -130,7 +130,7 @@ while true do
     print("Attempting fix(es):")
     level_fix(" - inventory", inventory_count_func, inventory_action_func, 13, 15)
     level_fix(" - coal", coal_count_func, coal_action_func, 8, 16)
-    level_fix(" - fuel", repl_count_func, repl_action_func, 1000, 2000)
+    level_fix(" - fuel", repl_count_func, repl_action_func, 500, 1000)
     print("")
   end
   
