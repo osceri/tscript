@@ -22,7 +22,7 @@ function go_home()
 end
 
 function work()
-  turtle.digDown()
+  minez(-1)
   z_work = z_work - 1
 end
 
