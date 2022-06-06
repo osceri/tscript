@@ -24,8 +24,6 @@ function go_home()
 end
 
 function shaft(N)
-  x0, y0, z0 = get_location()
-  
   local sign = 1
   local n = 0
   local m = 0
@@ -36,9 +34,9 @@ function shaft(N)
     sign = -sign
   end
   minex(sign*n)
-  
-  movex(x - x0)
-  movey(y - y0)
+
+  movex(x_work - x)
+  movey(y_work - y)
 end
   
 function work()
