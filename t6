@@ -1,14 +1,20 @@
 function vibe_check(lower, upper)
   level = turtle.getFuelLevel()
+  print("Current fuel level: ", level)
+  
   if level < lower then
+    print("Fuel level below threshold (", lower, ")!")
+    write("Refueling")
     while upper < level do
       if not(turtle.refuel()) then
-        write("bro im straight up not having a good time")
+        print(" Failed.")
         return false
       end
+      write(".")
       level = turtle.getFuelLevel()
     end
+    print(" Succeeded.")
   end
-  write("im cool bro !")
+  
   return true
 end
