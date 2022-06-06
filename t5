@@ -64,10 +64,6 @@ function movez(N)
 end
   
 
-function build
-  return 1
-end
-
 movex(5)
 movez(5)
 movey(5)
