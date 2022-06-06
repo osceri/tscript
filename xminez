@@ -4,12 +4,13 @@ require("t5")
 require("t8")
 
 local x_work = 5
-local y_work = 0
+local y_work = 5
 local z_work = 0
 
 local shaft_size = 4
 
 function go_retire()
+  print("Going to retire")
   x, y, z = get_location()
   movex(x_work - x)
   movey(y_work - y)
@@ -17,6 +18,7 @@ function go_retire()
 end
 
 function go_work()
+  print("Going to work")
   x, y, z = get_location()
   movex(x_work - x)
   movey(y_work - y)
@@ -24,6 +26,7 @@ function go_work()
 end
 
 function go_home()
+  print("Going to home")
   x, y, z = get_location()
   movez(-z)
   movey(-y)
@@ -53,6 +56,7 @@ function shaft(N)
 end
   
 function work()
+  print("Woking...")
   minez(-1)
   shaft(shaft_size)
   z_work = z_work - 1
@@ -107,7 +111,7 @@ end
 
 function get_good()
   print("Levels:")
-  inv_good = level_check("inventory", inventory_count_func, inventory_action_func, 2, 15)
+  inv_good = level_check("inventory", inventory_count_func, inventory_action_func, 13, 15)
   coal_good = level_check("coal", coal_count_func, coal_action_func, 8, 16)
   fuel_good = level_check("fuel", repl_count_func, repl_action_func, 1000, 2000)
   print("")
