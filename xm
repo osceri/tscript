@@ -9,6 +9,14 @@ local z_work = 0
 
 local shaft_size = 2
 
+function go_retire()
+  x, y, z = get_location()
+  movex(x_work - x)
+  movey(y_work - y)
+  movez(z_work - z)
+  minez(1)
+end
+
 function go_work()
   x, y, z = get_location()
   movex(x_work - x)
@@ -24,6 +32,9 @@ function go_home()
 end
 
 function shaft(N)
+  movex(x_work - x)
+  movey(y_work - y)
+  
   local sign = 1
   local n = 0
   local m = 0
@@ -35,14 +46,20 @@ function shaft(N)
   end
   minex(sign*n)
 
-  movex(x_work - x)
   movey(y_work - y)
+  movex(x_work - x)
 end
   
 function work()
   minez(-1)
   shaft(shaft_size)
   z_work = z_work - 1
+  
+  if z_work < -10
+    return true
+  else
+    return false
+  end
 end
 
 function repl_count_func()
@@ -89,8 +106,6 @@ end
 good_next = level_check("inventory", inventory_count_func, inventory_action_func, 13, 15) and level_check("coal", coal_count_func, coal_action_func, 8, 16) and level_check("fuel", repl_count_func, repl_action_func, 1000, 2000)
 
 while true do
-  x, y, z = get_location()
-  print("pos:", x, y, z)
   print("Levels:")
   inv_good = level_check("inventory", inventory_count_func, inventory_action_func, 13, 15)
   coal_good = level_check("coal", coal_count_func, coal_action_func, 8, 16)
@@ -108,12 +123,17 @@ while true do
   end
   
   if good_next then
-    work()
+    finished = work()
   else
     print("Attempting fix(es):")
     level_fix(" - inventory", inventory_count_func, inventory_action_func, 13, 15)
     level_fix(" - coal", coal_count_func, coal_action_func, 8, 16)
     level_fix(" - fuel", repl_count_func, repl_action_func, 1000, 2000)
     print("")
+  end
+  
+  if finished
+    go_retire()
+    break
   end
 end
