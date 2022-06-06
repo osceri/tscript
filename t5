@@ -102,10 +102,3 @@ function movez(dz)
     return count(go_down, -dz)
   end
 end
-
-function go_home()
-  movez(-z)
-  movey(-y)
-  movex(-x)
-  set_orientation(0)
-end
