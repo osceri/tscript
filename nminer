@@ -55,7 +55,7 @@ function inventory_count_func()
       slot = slot + 1
     end
   end
-  return 15 - slot
+  return slot
 end
 
 function inventory_action_func()
