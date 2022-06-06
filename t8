@@ -24,32 +24,29 @@ function vibe_check(count_func, action_func, lower, upper)
   return true
 end
 
-function level_fix(count_func, action_func, lower, upper)
+function level_fix(name, count_func, action_func, lower, upper)
   level = count_func()
   
   if level < lower then
-    write("Refueling ..")
+    write("Fixing", name, "level ..")
     while level < upper do
       if not(action_func()) then
         print(" failed.")
-        
-        print("Level: ", count_func())
         return false
       end
       write(".")
       level = count_func()
     end
     print(" succeeded.")
-    print("Level: ", count_func())
   end
   
   return true
 end
 
-function level_check(count_func, action_func, lower, upper)
+function level_check(name, count_func, action_func, lower, upper)
   level = count_func()
   
-  print("Level: ", count_func())
+  print(name, "level:", count_func())
   
   if level < lower then
     return false
