@@ -38,11 +38,4 @@ function set_orientation(P)
   end
 end
 
-set_orientation(0)
 set_orientation(1)
-set_orientation(0)
-set_orientation(2)
-set_orientation(0)
-set_orientation(3)
-set_orientation(0)
-set_orientation(4)
