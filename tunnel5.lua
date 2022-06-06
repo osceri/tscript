@@ -1,5 +1,0 @@
-turtle.dig()
-turtle.up()
-turtle.dig()
-turtle.down()
-turtle.forward()
