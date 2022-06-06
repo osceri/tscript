@@ -55,7 +55,7 @@ function inventory_count_func()
       slot = slot + 1
     end
   end
-  return 15 - slot
+  return slot - 15
 end
 
 function inventory_action_func()
@@ -74,7 +74,7 @@ while true do
   if inv_good and coal_good and fuel_good then
     work()
   else
-    inv_good = vibe_check(inventory_count_func, inventory_action_func, 2, 13)
+    inv_good = vibe_check(inventory_count_func, inventory_action_func, -13, -2)
     coal_good = vibe_check(coal_count_func, coal_action_func, 8, 16)
     fuel_good = vibe_check(repl_count_func, repl_action_func, 4000, 8000)
   end
