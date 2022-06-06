@@ -64,12 +64,19 @@ function inventory_action_func()
   return turtle.drop(4)
 end
 
+local inv_good = false
+local coal_good = false
+local fuel_good = false
+
 go_work()
 
 while true do
-  work()
-  vibe_check(inventory_count_func, inventory_action_func, 2, 13)
-  vibe_check(coal_count_func, coal_action_func, 8, 16)
-  vibe_check(repl_count_func, repl_action_func, 4000, 8000)
+  if inv_good and coal_good and fuel_good then
+    work()
+  else
+    inv_good = vibe_check(inventory_count_func, inventory_action_func, 2, 13)
+    coal_good = vibe_check(coal_count_func, coal_action_func, 8, 16)
+    fuel_good = vibe_check(repl_count_func, repl_action_func, 4000, 8000)
+  end
 end
 
