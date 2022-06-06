@@ -78,14 +78,14 @@ while true do
   good_prev = good_next
   good_next = inv_good and coal_good and fuel_good 
   
-  if not(good_next) and good_prev
+  if not(good_next) and good_prev then
     go_home()
   end
-  if good_next and not(good_prev)
+  if good_next and not(good_prev) then
     go_work()
   end
   
-  if good_next
+  if good_next then
     work()
   else
     level_fix(inventory_count_func, inventory_action_func, 13, 15)
