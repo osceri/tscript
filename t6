@@ -7,6 +7,7 @@ function vibe_check(lower, upper)
         return false
       end
       level = turtle.getFuelLevel()
+    end
   end
   write("im cool bro !")
   return true
