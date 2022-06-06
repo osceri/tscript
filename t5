@@ -1,23 +1,78 @@
-function dig1()
-  local has_block, data = turtle.inspect()
-  if has_block then
-    turtle.dig()
+-- Size of building environment
+local X = 8
+local Y = 8
+local Z = 8
+
+-- Current location, +z is down
+local x = 0
+local y = 0
+local z = 0
+
+function movex(N)
+  local n = 0
+  
+  if 0 < N then
+    while n < N do
+      turtle.forward()
+      n = n + 1
+    end
+  end
+  if N < 0 then
+    while n < -N do
+      turtle.backward()
+      n = n + 1
+    end
   end
 end
-
-function digger()
-  dig1()
-  turtle.up()
-  dig1()
-  turtle.down()
-  turtle.forward()
+  
+function movey(N)
+  local n = 0
+  
+  turtle.turnLeft()
+  
+  if 0 < N then
+    while n < N do
+      turtle.forward()
+      n = n + 1
+    end
+  end
+  if N < 0 then
+    while n < -N do
+      turtle.backward()
+      n = n + 1
+    end
+  end
+  
+  turtle.turnRight()
 end
 
-N = tonumber(arg[1])
-
-local n = 0
-
-while n < N do
-  digger()
-  n = n + 1
+function movez(N)
+  local n = 0
+  
+  if 0 < N then
+    while n < N do
+      turtle.up()
+      n = n + 1
+    end
+  end
+  if N < 0 then
+    while n < -N do
+      turtle.down()
+      n = n + 1
+    end
+  end
 end
+  
+
+function build
+  return 1
+end
+
+movex(5)
+movez(5)
+movey(5)
+movex(-5)
+movez(-5)
+movey(-5)
+
+  
