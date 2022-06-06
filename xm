@@ -18,9 +18,9 @@ end
 
 function go_work()
   x, y, z = get_location()
-  movex(x_work - x)
-  movey(y_work - y)
-  movez(z_work - z)
+  minex(x_work - x)
+  miney(y_work - y)
+  minez(z_work - z)
 end
 
 function go_home()
