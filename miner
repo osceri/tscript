@@ -22,6 +22,7 @@ function work()
 end
 
 function go_home()
+  x, y, z = get_location()
   movez(z - z_work)
   movey(y - y_work)
   movex(x - x_work)
