@@ -1,0 +1,23 @@
+function dig1()
+  local has_block, data = turtle.inspect()
+  if has_block then
+    turtle.dig()
+  end
+end
+
+function digger()
+  dig1()
+  turtle.up()
+  dig1()
+  turtle.down()
+  turtle.forward()
+end
+
+N = tonumber(arg[1])
+
+local n = 0
+
+while n < N do
+  digger()
+  n = n + 1
+end
