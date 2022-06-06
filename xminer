@@ -28,12 +28,14 @@ function shaft(N)
   
   local sign = 1
   local n = 0
+  local m = 0
   while n < N do
     n = n + 1
     minex(sign*n)
     miney(sign*n)
     sign = -sign
   end
+  minex(sign*n)
   
   movex(x0 - x)
   movey(y0 - y)
