@@ -114,7 +114,7 @@ function get_good()
   return inv_good and coal_good and fuel_good 
 end
 
-good_next = get_good()
+good_next = false
 
 while true do
   good_prev = good_next
