@@ -61,7 +61,11 @@ end
 function inventory_action_func()
   go_home()
   set_orientation(2)
-  return turtle.drop(4)
+  for i = 2,16 do
+    turtle.select(i)
+    turtle.drop()
+  end
+  return true
 end
 
 
