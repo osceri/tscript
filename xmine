@@ -132,7 +132,7 @@ while true do
     print("")
   end
   
-  if finished
+  if finished then
     go_retire()
     break
   end
