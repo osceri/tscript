@@ -112,3 +112,4 @@ function go_home()
   set_orientation(0)
 end
 
+movex(10)
