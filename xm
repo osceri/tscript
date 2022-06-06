@@ -109,7 +109,7 @@ function get_good()
   print("Levels:")
   inv_good = level_check("inventory", inventory_count_func, inventory_action_func, 2, 15)
   coal_good = level_check("coal", coal_count_func, coal_action_func, 8, 16)
-  fuel_good = level_check("fuel", repl_count_func, repl_action_func, 500, 100)
+  fuel_good = level_check("fuel", repl_count_func, repl_action_func, 2000, 4000)
   print("")
   return inv_good and coal_good and fuel_good 
 end
@@ -133,7 +133,7 @@ while true do
     print("Attempting fix(es):")
     level_fix(" - inventory", inventory_count_func, inventory_action_func, 2, 15)
     level_fix(" - coal", coal_count_func, coal_action_func, 8, 16)
-    level_fix(" - fuel", repl_count_func, repl_action_func, 500, 1000)
+    level_fix(" - fuel", repl_count_func, repl_action_func, 2000, 4000)
     print("")
   end
   
