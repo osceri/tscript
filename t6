@@ -3,6 +3,7 @@ function print_fuel_level()
 end
 
 function vibe_check(lower, upper)
+  turtle.select(1)
   level = turtle.getFuelLevel()
   print_fuel_level()
   
