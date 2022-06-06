@@ -69,6 +69,9 @@ local coal_good = false
 local fuel_good = false
 
 while true do
+  x, y, z = get_location()
+  O = get_orientation()
+  print("Pos: ", x, y, z, ", Dir: ", O)
   if inv_good and coal_good and fuel_good then
     go_work()
     work()
