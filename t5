@@ -97,7 +97,7 @@ end
 function mine_down()
   if turtle.detectDown() then
     turtle.digDown()
-  ned
+  end
   return go_down()
 end
 
