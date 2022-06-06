@@ -32,22 +32,25 @@ function go_home()
 end
 
 function shaft(N)
-  movex(x_work - x)
-  movey(y_work - y)
-  
   local sign = 1
   local n = 0
-  local m = 0
+  
+  local dx = 0
+  local dy = 0
+  
   while n < N do
     n = n + 1
     minex(sign*n)
     miney(sign*n)
+    dx = dx + sign*n
+    dy = dy + sign*n
     sign = -sign
   end
   minex(sign*n)
-
-  movey(y_work - y)
-  movex(x_work - x)
+  dx = dx + sign*n
+  
+  movey(-dy)
+  movex(-dx)
 end
   
 function work()
