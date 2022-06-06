@@ -11,6 +11,14 @@ local z = 0
 --        -x
 local O = 0
 
+function get_location()
+  return x, y, z
+end
+
+function get_orientation()
+  return O
+end
+
 function count(func, N)
   local n = 0
   while n < N do
