@@ -65,7 +65,7 @@ function go_up()
 end
 
 function go_down()
-  local F = turtle.up()
+  local F = turtle.down()
   if F then
     z = z - 1
   end
