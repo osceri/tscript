@@ -110,7 +110,7 @@ function get_good()
   inv_good = level_check("inventory", inventory_count_func, inventory_action_func, 2, 15)
   coal_good = level_check("coal", coal_count_func, coal_action_func, 8, 16)
   fuel_good = level_check("fuel", repl_count_func, repl_action_func, 500, 100)
-  prin()
+  print("")
   return inv_good and coal_good and fuel_good 
 end
 
