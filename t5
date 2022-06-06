@@ -19,8 +19,11 @@ local O = 0
 function count(func, N)
   local n = 0
   while n < N do
-    func()
-    n = n + 1
+    if func() then
+      n = n + 1
+    else
+      return false
+    end
   end
 end
 
@@ -77,31 +80,31 @@ end
 function movex(dx)
   if 0 < dx then 
     set_orientation(0)
-    count(go_forward, dx)
+    return count(go_forward, dx)
   end
   if 0 > dx then 
     set_orientation(2)
-    count(go_forward, -dx)
+    return count(go_forward, -dx)
   end
 end
     
 function movey(dy)
   if 0 < dy then 
     set_orientation(1)
-    count(go_forward, dy)
+    return count(go_forward, dy)
   end
   if 0 > dy then 
     set_orientation(3)
-    count(go_forward, -dy)
+    return count(go_forward, -dy)
   end
 end
 
 function movez(dz)
   if 0 < dz then 
-    count(go_up, dz)
+    return count(go_up, dz)
   end
   if 0 > dz then 
-    count(go_down, -dz)
+    return count(go_down, -dz)
   end
 end
 
@@ -112,4 +115,4 @@ function go_home()
   set_orientation(0)
 end
 
-movex(10)
+if movex(10) then else go_home() end
