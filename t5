@@ -64,12 +64,26 @@ function go_forward()
   return F
 end
 
+function mine_forward()
+  if turtle.detect() then
+    turtle.dig()
+  end
+  return go_forward()
+end
+
 function go_up()
   local F = turtle.up()
   if F then
     z = z + 1
   end
   return F
+end
+
+function mine_up()
+  if turtle.detectUp() then
+    turtle.digUp()
+  end
+  return go_up()
 end
 
 function go_down()
@@ -80,6 +94,13 @@ function go_down()
   return F
 end
 
+function mine_down()
+  if turtle.detectDown() then
+    turtle.digDown()
+  ned
+  return go_down()
+end
+
 function movex(dx)
   if 0 < dx then 
     set_orientation(0)
@@ -88,6 +109,17 @@ function movex(dx)
   if 0 > dx then 
     set_orientation(2)
     return count(go_forward, -dx)
+  end
+end
+
+function minex(dx)
+  if 0 < dx then 
+    set_orientation(0)
+    return count(mine_forward, dx)
+  end
+  if 0 > dx then 
+    set_orientation(2)
+    return count(mine_forward, -dx)
   end
 end
     
@@ -101,6 +133,17 @@ function movey(dy)
     return count(go_forward, -dy)
   end
 end
+   
+function miney(dy)
+  if 0 < dy then 
+    set_orientation(1)
+    return count(mine_forward, dy)
+  end
+  if 0 > dy then 
+    set_orientation(3)
+    return count(mine_forward, -dy)
+  end
+end
 
 function movez(dz)
   if 0 < dz then 
@@ -110,3 +153,13 @@ function movez(dz)
     return count(go_down, -dz)
   end
 end
+
+function minez(dz)
+  if 0 < dz then 
+    return count(mine_up, dz)
+  end
+  if 0 > dz then 
+    return count(mine_down, -dz)
+  end
+end
+
