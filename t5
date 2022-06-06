@@ -19,23 +19,69 @@ local O = 0
 function count(func, N)
   local n = 0
   while n < N do
-    func()
-    n = n + 1
+    if func() then
+      n = n + 1
+    else
+      return false
+    end
   end
 end
 
 function set_orientation(P)
   local k = (P - O) % 4
-  while k ~= 0 do
-    if k < 0 then
-      turtle.turnRight()
-      O = (O + 1) % 4
-    else
-      turtle.turnLeft()
-      O = (O - 1) % 4
+  if k == 1 then
+    turtle.turnRight()
+  end
+  if k == 2 then
+    turtle.turnRight()
+    turtle.turnRight()
+  end
+  if k == 3 then
+    turtle.turnLeft()
+  end
+  O = P
+end
+
+function go_forward()
+  local F = turtle.forward()
+  if F then
+    if O == 0 then
+      x = x + 1
     end
-    k = (P - O) % 4
+    if O == 1 then
+      y = y + 1
+    end
+    if O == 2 then
+      x = x - 1
+    end
+    if O == 3 then
+      y = y - 1
+    end
+  end
+  return F
+end
+
+function movex(dx)
+  if 0 < dx then 
+    set_orientation(0)
+    count(go_forward, dx)
+  end
+  if 0 > dx then 
+    set_orientation(2)
+    count(go_forward, -dx)
   end
 end
+    
+function movey(dy)
+  if 0 < dy then 
+    set_orientation(1)
+    count(go_forward, dy)
+  end
+  if 0 > dy then 
+    set_orientation(3)
+    count(go_forward, -dy)
+  end
+end
+   
 
 set_orientation(1)
