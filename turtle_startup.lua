@@ -12,7 +12,7 @@ function get_location()
 
     positions = {}
     distances = {}
-    for i in 1,3 do
+    for i = 1,3 do
         event, side, channel, reply_channel, message, distance = os.pullEvent("modem_message")
         position, _ = parse_location(message)
         positions[i] = position
