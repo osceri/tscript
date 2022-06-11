@@ -12,13 +12,13 @@ function get_location()
 
     positions = {}
     distances = {}
-    for i = 1,3 do
+    for i = 1,4 do
         event, side, channel, reply_channel, message, distance = os.pullEvent("modem_message")
         position, _ = parse_location(message)
         positions[i] = position
         distances[i] = distance
     end
-    position, success = trilocate(positions[1], distances[1], positions[2], distances[2], positions[3], distances[3])
+    position, success = trilocate(positions, distances)
     print("new:")
     print(repr_mat(positions))
     print(repr_vec(distances))

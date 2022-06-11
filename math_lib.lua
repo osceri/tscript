@@ -122,3 +122,37 @@ function trilocate(x1, d1, x2, d2, x3, d3)
     inv_G, success = inv(G)
     return transform_vec(inv_G, y), success
 end
+
+-- takes; positions: table[4][3], distances: table[4]
+-- gives; position: table[3], success: bool
+function quadlocate(x, d)
+    x1 = x[1]
+    x2 = x[2]
+    x3 = x[3]
+    x4 = x[4]
+
+    d1 = d[1]
+    d2 = d[2]
+    d3 = d[3]
+    d4 = d[4]
+
+    h1 = dot(x1, x1) - d1*d1
+    h2 = dot(x2, x2) - d2*d2
+    h3 = dot(x3, x3) - d3*d3
+    h4 = dot(x4, x4) - d4*d4
+
+    G = {
+        sub(x1, x4),
+        sub(x2, x4),
+        sub(x3, x4),
+    }
+
+    y = { 
+        0.5*(h1 - h4), 
+        0.5*(h2 - h4), 
+        0.5*(h3 - h4),
+    }
+
+    inv_G, success = inv(G)
+    return transform_vec(inv_G, y), success
+end
