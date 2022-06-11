@@ -22,6 +22,9 @@ function get_location()
 end
 
 while true do
-    get_location()
-    turtle.forward()
+    for i=1,5 do
+        get_location()
+        turtle.forward()
+    end
+    turtle.turnLeft()
 end
