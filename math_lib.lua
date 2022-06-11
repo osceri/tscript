@@ -57,6 +57,22 @@ function cross(x, y)
 end
 
 -- takes; matrix: table[3][3]
+-- gives; transpose: table[3][3]
+function transpose(A)
+    B = { {}, {}, {} }
+    B[1][1] = A[1][1]
+    B[1][2] = A[2][1]
+    B[1][3] = A[3][1]
+    B[2][1] = A[1][2]
+    B[2][2] = A[2][2]
+    B[2][3] = A[3][2]
+    B[3][1] = A[1][3]
+    B[3][2] = A[2][3]
+    B[3][3] = A[3][3]
+    return B
+end
+
+-- takes; matrix: table[3][3]
 -- gives; determinant: float
 function det(A)
     return A[1][1] * (A[2][2] * A[3][3] - A[3][2] * A[2][3]) + A[1][2] * (A[2][3] * A[3][1] - A[3][3] * A[2][1]) + A[1][3] * (A[2][1] * A[3][2] - A[3][1] * A[2][2])
@@ -103,6 +119,6 @@ function trilocate(x1, d1, x2, d2, x3, d3)
         0.5*(h3 - h1),
     }
 
-    inv_G, success = inv(G)
+    inv_G, success = inv(transpose(G))
     return transform_vec(inv_G, y), success
 end
