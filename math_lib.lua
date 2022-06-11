@@ -119,6 +119,6 @@ function trilocate(x1, d1, x2, d2, x3, d3)
         0.5*(h3 - h1),
     }
 
-    inv_G, success = inv(transpose(G))
+    inv_G, success = inv(G)
     return transform_vec(inv_G, y), success
 end
