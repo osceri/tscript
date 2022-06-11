@@ -18,7 +18,7 @@ function get_location()
         positions[i] = position
         distances[i] = distance
     end
-    position, success = trilocate(positions, distances)
+    position, success = quadlocate(positions, distances)
     print("new:")
     print(repr_mat(positions))
     print(repr_vec(distances))
