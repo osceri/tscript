@@ -46,22 +46,22 @@ function calibrate()
 
     if x2[1] > x1[1] then
         orientation = 'E'
-        calibration = true
+        calibrated = true
         return
     end
     if x2[1] < x1[1] then
         orientation = 'W'
-        calibration = true
+        calibrated = true
         return
     end
     if x2[3] > x1[3] then
         orientation = 'S'
-        calibration = true
+        calibrated = true
         return
     end
     if x2[3] < x1[3] then
         orientation = 'N'
-        calibration = true
+        calibrated = true
         return
     end
 end
