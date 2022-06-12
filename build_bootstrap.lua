@@ -19,6 +19,10 @@ get_as("startup.lua", "https://github.com/osceri/tscript/raw/main/build_startup.
 
 -- OK
 local file = io.open("state", "w")
+io.output(file)
+io.write("")
 io.close(file)
 local file = io.open("backup", "w")
+io.output(file)
+io.write("")
 io.close(file)
