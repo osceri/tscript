@@ -1,4 +1,3 @@
-require("x_smile_callbacks")
 
 x_internal_home = {}
 for i = 1,3 do
