@@ -13,7 +13,7 @@ function tps(time_out)
     end
 end
 
-function ytps()
+function ytps(modem)
     local event, side, channel, reply_channel, message, distance
 
     event, side, channel, reply_channel, message, distance = os.pullEvent()
@@ -31,5 +31,5 @@ modem.callRemote("modem_0", "open", 999)
 
 while true do
     print(os.time())
-    ytps()
+    ytps(modem)
 end
