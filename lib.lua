@@ -42,6 +42,7 @@ function get_location()
         d[message] = distance
         if d['x'] and d['y'] and d['z'] and d['o'] then
             x = quad(2, d)
+            break
         end
     end
 
