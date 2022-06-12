@@ -12,5 +12,13 @@ end
 
 -- Standard lib
 get_as("lib.lua", "https://github.com/osceri/tscript/raw/main/lib.lua")
+-- Math lib
+get_as("math_lib.lua", "https://github.com/osceri/tscript/raw/main/math_lib.lua")
 -- Code that should always run
-get_as("startup.lua", "https://github.com/osceri/tscript/raw/main/send_startup.lua")
+get_as("startup.lua", "https://github.com/osceri/tscript/raw/main/build_startup.lua")
+
+-- OK
+local file = io.open("state", "w")
+io.close(file)
+local file = io.open("backup", "w")
+io.close(file)

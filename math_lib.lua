@@ -100,30 +100,7 @@ function inv(A)
     end
 end
 
--- takes; pos 1: table[3], distance 1: float, pos 2: table[3], distance 2: float, pos 3: table[3], distance 3: float
--- gives; position: table[3], success: bool
-function trilocate(x1, d1, x2, d2, x3, d3)
-    h1 = dot(x1, x1) - d1*d1
-    h2 = dot(x2, x2) - d2*d2
-    h3 = dot(x3, x3) - d3*d3
-
-    G = {
-        sub(x1, x2),
-        sub(x2, x3),
-        sub(x3, x1),
-    }
-
-    y = { 
-        0.5*(h1 - h2), 
-        0.5*(h2 - h3), 
-        0.5*(h3 - h1),
-    }
-
-    inv_G, success = inv(G)
-    return transform_vec(inv_G, y), success
-end
-
--- takes; positions: table[4][3], distances: table[4]
+-- takes; distance between nodes: int, recorded distances from rigin: table[4]
 -- gives; position: table[3], success: bool
 function quad(k, _d)
     local od, xd, yd, zd
@@ -141,6 +118,8 @@ function quad(k, _d)
     return x
 end
 
+-- takes; distance between nodes: int, position: table[4]
+-- gives; distances: table[4]
 function invquad(k, _x)
     local d = {}
     local x, y, z
