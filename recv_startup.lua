@@ -24,6 +24,10 @@ end
 local modem = peripheral.find("modem") or error("No modem connected")
 
 modem.callRemote("modem_0", "open", 999)
+modem.callRemote("modem_1", "open", 999)
+modem.callRemote("modem_2", "open", 999)
+modem.callRemote("modem_3", "open", 999)
+modem.callRemote("modem_4", "open", 999)
 
 while true do
     ytps()
