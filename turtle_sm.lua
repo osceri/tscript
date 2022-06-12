@@ -95,6 +95,8 @@ x_internal_destination[2] = x_internal_home[2]
 end
 
 function x_goto(delta)
+    print(x_internal_destination[1], x_internal_destination[2], x_internal_destination[3])
+    print(position[1], position[2], position[3])
    function before(time) 
        return x_goto_timer < time
    end
