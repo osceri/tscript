@@ -1,3 +1,14 @@
+x_internal_destination = {}
+for i = 1,3 do
+  x_internal_destination[i] = 0
+end
+
+x_internal_home = {}
+for i = 1,3 do
+  x_internal_home[i] = 0
+end
+
+
 X_CALIBRATE_ = "X_CALIBRATE_"
 X_CALIBRATE_END = "X_CALIBRATE_END"
 X_CALIBRATE_GOTO = "X_CALIBRATE_GOTO"
@@ -52,7 +63,7 @@ function x_calibrate(delta)
        break;
    end
    while x_calibrate_state == X_CALIBRATE_GOTO do
-       if eq(position, destination) then
+       if eq(position, x_internal_destination) then
            calibrate()
            x_goto_state = X_GOTO_
            x_calibrate_state = X_CALIBRATE_END
@@ -67,7 +78,7 @@ function x_calibrate(delta)
    end
    while x_calibrate_state == X_CALIBRATE_INIT do
        if 1 then
-           destination = get_location()destination[2] = home[2]
+           x_internal_destination = get_location()x_internal_destination[2] = x_internal_home[2]
            x_calibrate_state = X_CALIBRATE_GOTO
            x_calibrate_timer = 0
            break
@@ -129,37 +140,37 @@ function x_goto(delta)
        break;
    end
    while x_goto_state == X_GOTO_MOVE do
-       if destination2>position2 then
+       if x_internal_destination2>position2 then
            move('U')
            x_goto_state = X_GOTO_UP
            x_goto_timer = 0
            break
        end
-       if destination2<position2 then
+       if x_internal_destination2<position2 then
            move('D')
            x_goto_state = X_GOTO_DOWN
            x_goto_timer = 0
            break
        end
-       if destination1<position1 then
+       if x_internal_destination1<position1 then
            move('W')
            x_goto_state = X_GOTO_WEST
            x_goto_timer = 0
            break
        end
-       if destination1>position1 then
+       if x_internal_destination1>position1 then
            move('E')
            x_goto_state = X_GOTO_EAST
            x_goto_timer = 0
            break
        end
-       if destination3>position3 then
+       if x_internal_destination3>position3 then
            move('S')
            x_goto_state = X_GOTO_SOUTH
            x_goto_timer = 0
            break
        end
-       if destination3<position3 then
+       if x_internal_destination3<position3 then
            move('N')
            x_goto_state = X_GOTO_NORTH
            x_goto_timer = 0
@@ -252,7 +263,7 @@ function x_main(delta)
    end
    while x_main_state == X_MAIN_INIT do
        if 1 then
-           home =  40, 40, 40 
+           x_internal_home =  40, 40, 40 
            x_main_state = X_MAIN_CAL
            x_main_timer = 0
            break
