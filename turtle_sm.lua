@@ -1,12 +1,13 @@
-
-x_internal_destination = {}
-for i = 1,3 do
-  x_internal_destination[i] = 0
-end
+require("x_smile_callbacks")
 
 x_internal_home = {}
 for i = 1,3 do
   x_internal_home[i] = 0
+end
+
+x_internal_destination = {}
+for i = 1,3 do
+  x_internal_destination[i] = 0
 end
 
 
@@ -79,7 +80,10 @@ function x_calibrate(delta)
    end
    while x_calibrate_state == X_CALIBRATE_INIT do
        if 1 then
-           x_internal_destination = get_location()x_internal_destination[2] = x_internal_home[2]
+           
+x_internal_destination = get_location()
+x_internal_destination[2] = x_internal_home[2]
+
            x_calibrate_state = X_CALIBRATE_GOTO
            x_calibrate_timer = 0
            break
@@ -130,7 +134,9 @@ function x_goto(delta)
    end
    while x_goto_state == X_GOTO_INIT do
        if 1 then
-           get_location()
+           
+get_location()
+
            x_goto_state = X_GOTO_MOVE
            x_goto_timer = 0
            break
@@ -141,14 +147,17 @@ function x_goto(delta)
        break;
    end
    while x_goto_state == X_GOTO_MOVE do
-       if x_internal_destination[2]>position[2] then
+       if x_internal_destination[2]<position[2] then
            move('U')
            x_goto_state = X_GOTO_UP
            x_goto_timer = 0
            break
        end
-       if x_internal_destination[2]<position[2] then
-           move('D')
+       if 
+x_internal_destination[2]>position[2] then
+           
+move('D')
+
            x_goto_state = X_GOTO_DOWN
            x_goto_timer = 0
            break
@@ -171,8 +180,11 @@ function x_goto(delta)
            x_goto_timer = 0
            break
        end
-       if x_internal_destination[3]<position[3] then
-           move('N')
+       if 
+x_internal_destination[3]<position[3] then
+           
+move('N')
+
            x_goto_state = X_GOTO_NORTH
            x_goto_timer = 0
            break
