@@ -20,18 +20,21 @@ function get_location()
     modem.transmit(10000, 9999, "ping")
 
     local d = {}
-    local x = {}
 
     while true do
         event, side, channel, reply_channel, message, distance = os.pullEvent("modem_message")
         d[message] = distance
         if d['x'] and d['y'] and d['z'] and d['o'] then
-            x = quad(2, d)
+            position = quad(2, d)
             break
         end
     end
 
-    return { x[1] + 0.5, x[2] + 0.5, x[3] + 0.5 }
+    position[1] = position[1] + 0.5
+    position[2] = position[2] + 0.5
+    position[3] = position[3] + 0.5
+
+    return position
 end
 
 -- hopes; calibrates the device
@@ -138,6 +141,23 @@ function set_orientation(direction)
     end
 end
 
-function move() 
-
+-- Choose N, E, S, W, U, D
+function move(direction) 
+    if direction == 'N' then
+        set_orientation('N')
+        turtle.forward()
+    elseif direction == 'E' then
+        set_orientation('E')
+        turtle.forward()
+    elseif direction == 'S' then
+        set_orientation('S')
+        turtle.forward()
+    elseif direction == 'W' then
+        set_orientation('W')
+        turtle.forward()
+    elseif direction == 'U' then
+        turtle.up()
+    elseif direction == 'D' then
+        turtle.down()
+    end
 end
