@@ -4,9 +4,10 @@ function tps(time_out)
     local event, side, channel, reply_channel, message, distance
 
     os.startTimer(time_out)
-    event, side, channel, reply_channel, message, distance = os.pullEvent()
+    event = {}
 
     while event ~= "timer" do
+        event, side, channel, reply_channel, message, distance = os.pullEvent()
         print(message, distance)
     end
 end
