@@ -1,8 +1,8 @@
+location = "x: 0, y: 0, z: 0"
 require("lib")
 
 local modem = peripheral.find("modem") or error("No modem connected")
 
-location = "x: 10, y: 10, z: 10"
 
 modem.open(10000)
 

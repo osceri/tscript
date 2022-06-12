@@ -13,6 +13,6 @@ end
 -- Standard lib
 get_as("lib.lua", "https://github.com/osceri/tscript/raw/main/lib.lua")
 -- Math lib
-get_as("math_lib.lua", "https://github.com/osceri/tscript/raw/main/math_lib.lua")
+get_as("math2_lib.lua", "https://github.com/osceri/tscript/raw/main/math2_lib.lua")
 -- Code that should always run
 get_as("startup.lua", "https://github.com/osceri/tscript/raw/main/turtle_startup.lua")

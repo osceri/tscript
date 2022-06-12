@@ -1,5 +1,5 @@
 require("lib")
-require("math_lib")
+require("math2_lib")
 
 local modem = peripheral.find("modem") or error("No modem connected")
 modem.open(9999)
@@ -12,17 +12,19 @@ function get_location()
 
     positions = {}
     distances = {}
-    for i = 1,4 do
+    for i = 1,9 do
         event, side, channel, reply_channel, message, distance = os.pullEvent("modem_message")
         position, _ = parse_location(message)
-        positions[i] = position
+        positions[3*i - 2] = position[1]
+        positions[3*i - 1] = position[2]
+        positions[3*i - 0] = position[3]
         distances[i] = distance
     end
-    position, success = quadlocate(positions, distances)
+    position, success = multilaterate(matrix(9, 3, positions), matrix(9, 1, distances))
     print("new:")
-    print(repr_mat(positions))
-    print(repr_vec(distances))
-    print(repr_vec(position), success)
+    print(repr(positions))
+    print(repr(distances))
+    print(repr(position), success)
 end
 
 while true do
