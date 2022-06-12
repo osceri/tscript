@@ -14,5 +14,7 @@ end
 get_as("lib.lua", "https://github.com/osceri/tscript/raw/main/lib.lua")
 -- Math lib
 get_as("math_lib.lua", "https://github.com/osceri/tscript/raw/main/math_lib.lua")
+-- Wireless turtle lib
+get_as("wireless_turtle_lib.lua", "https://github.com/osceri/tscript/raw/main/wireless_turtle_lib.lua")
 -- Code that should always run
 get_as("startup.lua", "https://github.com/osceri/tscript/raw/main/turtle_startup.lua")
