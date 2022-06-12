@@ -6,10 +6,8 @@ function tps(time_out)
     os.startTimer(time_out)
     event, side, channel, reply_channel, message, distance = os.pullEvent()
 
-    if event == "modem_message" then
-        print(message)
-    else
-        print(".")
+    while event ~= "timer" do
+        print(message, distance)
     end
 end
 
