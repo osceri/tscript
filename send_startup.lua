@@ -6,9 +6,13 @@ function tps(time_out)
     os.startTimer(time_out)
     event = {}
 
-    while event ~= "timer" do
+    while true do
         event, side, channel, reply_channel, message, distance = os.pullEvent()
-        print(message, distance)
+        if event ~= "timer" then
+            print(message, distance)
+        else
+            break
+        end
     end
 end
 
