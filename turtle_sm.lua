@@ -48,7 +48,7 @@ function x_calibrate(delta)
    function after(time)
        return time < x_calibrate_timer
    end
-   if x_calibrate_state == X_CALIBRATE_ do
+   if x_calibrate_state == X_CALIBRATE_ then
        if 1 then
            
            x_calibrate_state = X_CALIBRATE_INIT
@@ -57,14 +57,14 @@ function x_calibrate(delta)
        end
        return
    end
-   if x_calibrate_state == X_CALIBRATE_END do
+   if x_calibrate_state == X_CALIBRATE_END then
        if 1 then
            
            x_calibrate_timer = x_calibrate_timer + delta
        end
        return
    end
-   if x_calibrate_state == X_CALIBRATE_GOTO do
+   if x_calibrate_state == X_CALIBRATE_GOTO then
        if eq(position, x_internal_destination) then
            calibrate()
            x_goto_state = X_GOTO_
@@ -79,7 +79,7 @@ function x_calibrate(delta)
        end
        return
    end
-   if x_calibrate_state == X_CALIBRATE_INIT do
+   if x_calibrate_state == X_CALIBRATE_INIT then
        if 1 then
            
            x_internal_destination[2] = x_internal_home[2]
@@ -106,7 +106,7 @@ function x_goto(delta)
    function after(time)
        return time < x_goto_timer
    end
-   if x_goto_state == X_GOTO_ do
+   if x_goto_state == X_GOTO_ then
        if 1 then
            
            x_goto_state = X_GOTO_INIT
@@ -115,20 +115,7 @@ function x_goto(delta)
        end
        return
    end
-   if x_goto_state == X_GOTO_DOWN do
-       if 1 then
-           
-           x_goto_state = X_GOTO_INIT
-           x_goto_timer = 0
-           return
-       end
-       if 1 then
-           
-           x_goto_timer = x_goto_timer + delta
-       end
-       return
-   end
-   if x_goto_state == X_GOTO_EAST do
+   if x_goto_state == X_GOTO_DOWN then
        if 1 then
            
            x_goto_state = X_GOTO_INIT
@@ -141,7 +128,20 @@ function x_goto(delta)
        end
        return
    end
-   if x_goto_state == X_GOTO_INIT do
+   if x_goto_state == X_GOTO_EAST then
+       if 1 then
+           
+           x_goto_state = X_GOTO_INIT
+           x_goto_timer = 0
+           return
+       end
+       if 1 then
+           
+           x_goto_timer = x_goto_timer + delta
+       end
+       return
+   end
+   if x_goto_state == X_GOTO_INIT then
        if 1 then
            
            get_location()
@@ -156,7 +156,7 @@ function x_goto(delta)
        end
        return
    end
-   if x_goto_state == X_GOTO_MOVE do
+   if x_goto_state == X_GOTO_MOVE then
        if x_internal_destination[2]>position[2] then
            
            move('U')
@@ -217,7 +217,7 @@ x_internal_destination[3]<position[3] then
        end
        return
    end
-   if x_goto_state == X_GOTO_NORTH do
+   if x_goto_state == X_GOTO_NORTH then
        if 1 then
            
            x_goto_state = X_GOTO_INIT
@@ -230,7 +230,7 @@ x_internal_destination[3]<position[3] then
        end
        return
    end
-   if x_goto_state == X_GOTO_SOUTH do
+   if x_goto_state == X_GOTO_SOUTH then
        if 1 then
            
            x_goto_state = X_GOTO_INIT
@@ -243,7 +243,7 @@ x_internal_destination[3]<position[3] then
        end
        return
    end
-   if x_goto_state == X_GOTO_UP do
+   if x_goto_state == X_GOTO_UP then
        if 1 then
            
            x_goto_state = X_GOTO_INIT
@@ -256,7 +256,7 @@ x_internal_destination[3]<position[3] then
        end
        return
    end
-   if x_goto_state == X_GOTO_WEST do
+   if x_goto_state == X_GOTO_WEST then
        if 1 then
            
            x_goto_state = X_GOTO_INIT
@@ -278,7 +278,7 @@ function x_main(delta)
    function after(time)
        return time < x_main_timer
    end
-   if x_main_state == X_MAIN_ do
+   if x_main_state == X_MAIN_ then
        if 1 then
            
            x_main_state = X_MAIN_INIT
@@ -287,7 +287,7 @@ function x_main(delta)
        end
        return
    end
-   if x_main_state == X_MAIN_CAL do
+   if x_main_state == X_MAIN_CAL then
        if calibrated then
            
            x_calibrate_state = X_CALIBRATE_
@@ -302,14 +302,14 @@ function x_main(delta)
        end
        return
    end
-   if x_main_state == X_MAIN_DONE do
+   if x_main_state == X_MAIN_DONE then
        if 1 then
            
            x_main_timer = x_main_timer + delta
        end
        return
    end
-   if x_main_state == X_MAIN_INIT do
+   if x_main_state == X_MAIN_INIT then
        if 1 then
            
            x_internal_home = { 40, 40, 40 }
