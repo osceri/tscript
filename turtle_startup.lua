@@ -6,7 +6,9 @@ require("turtle_sm")
 local delta = 0.1
 
 while true do
-    print(x_main_state, x_calibrate_state, x_goto_state)
+    print(repr_vec(position))
+    print(repr_vec(x_internal_destination))
+    print(repr_vec(x_internal_home))
     x_main(delta)
     sleep(delta)
 end
