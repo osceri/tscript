@@ -155,11 +155,3 @@ function invquad(k, _x)
 
     return d
 end
-
---k = 2
---x = { 100.5, 200.5, -60.5 }
---d = invquad(k, x)
---y = quad(k, d)
---print(x[1], x[2], x[3])
---print(y[1], y[2], y[3])
---print()

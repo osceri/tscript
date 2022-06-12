@@ -1,5 +1,5 @@
 require("lib")
-require("math2_lib")
+require("math_lib")
 
 local modem = peripheral.find("modem") or error("No modem connected")
 modem.open(9999)
