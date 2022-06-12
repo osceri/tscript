@@ -50,6 +50,7 @@ function x_calibrate(delta)
    end
    while x_calibrate_state == X_CALIBRATE_ do
        if 1 then
+           
            x_calibrate_state = X_CALIBRATE_INIT
            x_calibrate_timer = 0
            break
@@ -58,6 +59,7 @@ function x_calibrate(delta)
    end
    while x_calibrate_state == X_CALIBRATE_END do
        if 1 then
+           
            x_calibrate_timer = x_calibrate_timer + delta
        end
        break;
@@ -71,6 +73,7 @@ function x_calibrate(delta)
            break
        end
        if 1 then
+           
            x_goto(delta)
            x_calibrate_timer = x_calibrate_timer + delta
        end
@@ -79,14 +82,16 @@ function x_calibrate(delta)
    while x_calibrate_state == X_CALIBRATE_INIT do
        if 1 then
            
-x_internal_destination = get_location()
-x_internal_destination[2] = x_internal_home[2]
-
+           x_internal_destination[2] = x_internal_home[2]
+           x_internal_destination[1] = position[1]
+           x_internal_destination[3] = position[3]
+           
            x_calibrate_state = X_CALIBRATE_GOTO
            x_calibrate_timer = 0
            break
        end
        if 1 then
+           
            x_calibrate_timer = x_calibrate_timer + delta
        end
        break;
@@ -102,6 +107,7 @@ function x_goto(delta)
    end
    while x_goto_state == X_GOTO_ do
        if 1 then
+           
            x_goto_state = X_GOTO_INIT
            x_goto_timer = 0
            break
@@ -110,22 +116,26 @@ function x_goto(delta)
    end
    while x_goto_state == X_GOTO_DOWN do
        if 1 then
+           
            x_goto_state = X_GOTO_INIT
            x_goto_timer = 0
            break
        end
        if 1 then
+           
            x_goto_timer = x_goto_timer + delta
        end
        break;
    end
    while x_goto_state == X_GOTO_EAST do
        if 1 then
+           
            x_goto_state = X_GOTO_INIT
            x_goto_timer = 0
            break
        end
        if 1 then
+           
            x_goto_timer = x_goto_timer + delta
        end
        break;
@@ -133,13 +143,14 @@ function x_goto(delta)
    while x_goto_state == X_GOTO_INIT do
        if 1 then
            
-get_location()
-
+           get_location()
+           
            x_goto_state = X_GOTO_MOVE
            x_goto_timer = 0
            break
        end
        if 1 then
+           
            x_goto_timer = x_goto_timer + delta
        end
        break;
@@ -154,8 +165,8 @@ get_location()
        if 
 x_internal_destination[2]<position[2] then
            
-move('D')
-
+           move('D')
+           
            x_goto_state = X_GOTO_DOWN
            x_goto_timer = 0
            break
@@ -181,57 +192,66 @@ move('D')
        if 
 x_internal_destination[3]<position[3] then
            
-move('N')
-
+           move('N')
+           
            x_goto_state = X_GOTO_NORTH
            x_goto_timer = 0
            break
        end
        if 1 then
+           
            x_goto_timer = x_goto_timer + delta
        end
        break;
    end
    while x_goto_state == X_GOTO_NORTH do
        if 1 then
+           
            x_goto_state = X_GOTO_INIT
            x_goto_timer = 0
            break
        end
        if 1 then
+           
            x_goto_timer = x_goto_timer + delta
        end
        break;
    end
    while x_goto_state == X_GOTO_SOUTH do
        if 1 then
+           
            x_goto_state = X_GOTO_INIT
            x_goto_timer = 0
            break
        end
        if 1 then
+           
            x_goto_timer = x_goto_timer + delta
        end
        break;
    end
    while x_goto_state == X_GOTO_UP do
        if 1 then
+           
            x_goto_state = X_GOTO_INIT
            x_goto_timer = 0
            break
        end
        if 1 then
+           
            x_goto_timer = x_goto_timer + delta
        end
        break;
    end
    while x_goto_state == X_GOTO_WEST do
        if 1 then
+           
            x_goto_state = X_GOTO_INIT
            x_goto_timer = 0
            break
        end
        if 1 then
+           
            x_goto_timer = x_goto_timer + delta
        end
        break;
@@ -247,6 +267,7 @@ function x_main(delta)
    end
    while x_main_state == X_MAIN_ do
        if 1 then
+           
            x_main_state = X_MAIN_INIT
            x_main_timer = 0
            break
@@ -255,12 +276,14 @@ function x_main(delta)
    end
    while x_main_state == X_MAIN_CAL do
        if calibrated then
+           
            x_calibrate_state = X_CALIBRATE_
            x_main_state = X_MAIN_DONE
            x_main_timer = 0
            break
        end
        if 1 then
+           
            x_calibrate(delta)
            x_main_timer = x_main_timer + delta
        end
@@ -268,6 +291,7 @@ function x_main(delta)
    end
    while x_main_state == X_MAIN_DONE do
        if 1 then
+           
            x_main_timer = x_main_timer + delta
        end
        break;
@@ -280,6 +304,7 @@ function x_main(delta)
            break
        end
        if 1 then
+           
            x_main_timer = x_main_timer + delta
        end
        break;
