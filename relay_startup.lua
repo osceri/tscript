@@ -1,4 +1,4 @@
-location = "x: 0, y: 0, z: 0"
+location = "x"
 require("lib")
 
 local modem = peripheral.find("modem") or error("No modem connected")

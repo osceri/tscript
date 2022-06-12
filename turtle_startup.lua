@@ -10,21 +10,17 @@ function get_location()
     local event, side, channel, reply_channel, message, distance
     modem.transmit(10000, 9999, "ping")
 
-    positions = {}
-    distances = {}
-    for i = 1,9 do
+    local d = {}
+    local x = {}
+
+    while true do
         event, side, channel, reply_channel, message, distance = os.pullEvent("modem_message")
-        position, _ = parse_location(message)
-        positions[3*i - 2] = position[1]
-        positions[3*i - 1] = position[2]
-        positions[3*i - 0] = position[3]
-        distances[i] = distance
+        d[message] = distance
+        if d['x'] and d['y'] and d['z'] and d['o'] then
+            x = quad(2, d)
+        end
     end
-    position, success = multilaterate(matrix(9, 3, positions), matrix(9, 1, distances))
-    print("new:")
-    print(repr(positions))
-    print(repr(distances))
-    print(repr(position), success)
+    print(x[1], x[2], x[3])
 end
 
 while true do

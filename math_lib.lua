@@ -125,34 +125,41 @@ end
 
 -- takes; positions: table[4][3], distances: table[4]
 -- gives; position: table[3], success: bool
-function quadlocate(x, d)
-    x1 = x[1]
-    x2 = x[2]
-    x3 = x[3]
-    x4 = x[4]
+function quad(k, _d)
+    local od, xd, yd, zd
+    local x = {}
 
-    d1 = d[1]
-    d2 = d[2]
-    d3 = d[3]
-    d4 = d[4]
+    xd = _d['x'] * _d['x']
+    yd = _d['y'] * _d['y']
+    zd = _d['z'] * _d['z']
+    od = _d['o'] * _d['o']
 
-    h1 = dot(x1, x1) - d1*d1
-    h2 = dot(x2, x2) - d2*d2
-    h3 = dot(x3, x3) - d3*d3
-    h4 = dot(x4, x4) - d4*d4
+    x[1] = (od - xd + k * k) / (2 * k)
+    x[2] = (od - yd + k * k) / (2 * k)
+    x[3] = (od - zd + k * k) / (2 * k)
 
-    G = {
-        sub(x1, x4),
-        sub(x2, x4),
-        sub(x3, x4),
-    }
-
-    y = { 
-        0.5*(h1 - h4), 
-        0.5*(h2 - h4), 
-        0.5*(h3 - h4),
-    }
-
-    inv_G, success = inv(G)
-    return transform_vec(inv_G, y), success
+    return x
 end
+
+function invquad(k, _x)
+    local d = {}
+    local x, y, z
+    x = _x[1]
+    y = _x[2]
+    z = _x[3]
+
+    d['x'] = math.sqrt((x-k)*(x-k) + y*y + z*z)
+    d['y'] = math.sqrt(x*x + (y-k)*(y-k) + z*z)
+    d['z'] = math.sqrt(x*x + y*y + (z-k)*(z-k))
+    d['o'] = math.sqrt(x*x + y*y + z*z)
+
+    return d
+end
+
+--k = 2
+--x = { 100.5, 200.5, -60.5 }
+--d = invquad(k, x)
+--y = quad(k, d)
+--print(x[1], x[2], x[3])
+--print(y[1], y[2], y[3])
+--print()
