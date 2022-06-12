@@ -164,7 +164,7 @@ function inverse(_x)
     local D = __det(_x)
 
     if D*D < 0.0001 then
-        return _m, false
+        return _m
     end
 
     D = 1/D
@@ -179,7 +179,7 @@ function inverse(_x)
         end
     end
 
-    return _m, true
+    return _m
 end
 
 function dot(_x, _y)
@@ -192,9 +192,9 @@ function dot(_x, _y)
         error("incorrect x and y dimensionality when taking the dot product")
     end
 
-    _sum = 0
-    for i=1,_x[R] do
-        for j=1,_x[C] do
+    local _sum = 0
+    for i = 1,_x[R] do
+        for j = 1,_x[C] do
             _sum = _sum + _x[i][j]*_y[i][j]
         end
     end
@@ -223,19 +223,3 @@ function repr(_v)
     end
 end
 
-x = matrix(4, 1, {
-    1,
-    2,
-    3,
-    4,
-})
-
-y = matrix(4, 4, {
-    1, 2, 3, 1,
-    3, 2, 4, 9,
-    1, 7, 3, 1,
-    4, 7, 6, 3,
-})
-
-
-print(repr(mul(inverse(y), x)))
