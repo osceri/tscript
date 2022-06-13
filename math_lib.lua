@@ -134,3 +134,12 @@ function invquad(k, _x)
 
     return d
 end
+
+
+x = { 100.5, 20.5, -400.5 }
+
+d = invquad(2, x)
+y = quad(2, d)
+
+print(repr_vec(x))
+print(repr_vec(y))
