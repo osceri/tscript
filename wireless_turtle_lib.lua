@@ -161,3 +161,7 @@ function move(direction)
         turtle.down()
     end
 end
+
+function inventory_empty()
+    return false
+end
